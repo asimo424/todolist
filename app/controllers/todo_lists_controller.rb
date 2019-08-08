@@ -5,6 +5,8 @@ class TodoListsController < ApplicationController
   # GET /todo_lists.json
   def index
     @todo_lists = TodoList.all
+    @q = TodoList.ransack(params[:q])
+    @result = @q.result(distinct: true)
   end
 
   # GET /todo_lists/1
